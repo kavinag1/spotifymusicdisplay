@@ -6,6 +6,31 @@ A compact Spotify "now playing" display built with an ESP32-C3 Super Mini, a 1.8
 
 ## Wiring
 
+### Wiring Diagram
+
+```
+ ┌─────────────────┐          ┌──────────────────────────┐
+ │  ST7735 TFT     │          │    ESP32-C3 Super Mini    │
+ │  (1.8", 128×160)│          │                          │
+ ├─────────────────┤          ├──────────────────────────┤
+ │ VCC  ───────────┼──────────┼─ 3.3V                    │
+ │ GND  ───────────┼──────────┼─ GND ────────────────────┼─┐
+ │ CS   ───────────┼──────────┼─ GPIO 7                  │ │
+ │ DC   ───────────┼──────────┼─ GPIO 2                  │ │
+ │ RST  ───────────┼──────────┼─ GPIO 3                  │ │
+ │ SDA  ───────────┼──────────┼─ GPIO 6 (MOSI)           │ │
+ │ SCL  ───────────┼──────────┼─ GPIO 4 (SCLK)           │ │
+ └─────────────────┘          │                          │ │
+                               │ GPIO 0 ──[PREV  btn]────┼─┤
+                               │ GPIO 1 ──[PLAY  btn]────┼─┤
+                               │ GPIO 5 ──[NEXT  btn]────┼─┤
+                               └──────────────────────────┘ │
+                                                             │
+                                                            GND
+                                (buttons are active-LOW; each
+                                 button connects pin → GND)
+```
+
 ### TFT (ST7735)
 
 | TFT pin | ESP32-C3 GPIO |
